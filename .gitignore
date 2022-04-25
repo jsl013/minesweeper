@@ -1,1 +1,4 @@
 **/build
+**/tags
+**/bin
+**/.ccls-cache

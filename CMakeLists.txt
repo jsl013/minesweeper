@@ -11,4 +11,6 @@ else()
     set(CMAKE_BUILD_TYPE Debug)
 endif()
 
+SET ( CMAKE_INSTALL_PREFIX ../ )
+
 add_subdirectory(src)

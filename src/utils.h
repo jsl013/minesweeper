@@ -10,7 +10,7 @@
 #define SOUTH 4
 
 const int config[3][3] = {
-  {9, 9, 10}, {16, 16, 40}, {30, 16, 99}
+  {9, 9, 10}, {16, 16, 40}, {16, 30, 99}
 };
 
 static struct termios old, current;
