@@ -31,6 +31,8 @@ int minesweeper_c::action() {
     ret = m_minefield->check_no_mine(cur_row, cur_col);
   else if (key == 'w')
     m_minefield->check_mine(cur_row, cur_col);
+  else if (key == 'e')
+    ret = m_minefield->check_neighbors(cur_row, cur_col);
 
   if (ret == -1) {
     m_minefield->bomb(cur_row, cur_col);

@@ -10,6 +10,7 @@ public:
 
   int check_no_mine(int m, int n);
   void check_mine(int m, int n);
+  int check_neighbors(int m, int n);
   void init();
 
   // display

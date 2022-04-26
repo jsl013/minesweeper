@@ -42,9 +42,26 @@ int minefield_c::check_no_mine(int m, int n) {
 
 void minefield_c::check_mine(int m, int n) {
   // toggle
-  std::cout << possiblefield[0][0] << std::endl;
   possiblefield[m][n] = !possiblefield[m][n];
   donefield[m][n] = !donefield[m][n];
+}
+
+int minefield_c::check_neighbors(int m, int n) {
+  if (!donefield[m][n]) return 0;
+
+  for (int i = -1; i <= 1; i++) {
+    int m_row = m + i;
+    for (int j = -1; j <= 1; j++) {
+      int m_col = n + j;
+      if ((i == 0 && j == 0) || possiblefield[m_row][m_col]) continue;
+      if (minefield[m_row][m_col]) return -1; // bomb!
+      if (!donefield[m_row][m_col]) {
+        donefield[m_row][m_col] = true;
+        cur_done_n++;
+      }
+    }
+  }
+  return 0;
 }
 
 bool minefield_c::is_mine(int m, int n) {
@@ -70,7 +87,6 @@ void minefield_c::init_minefield() {
   srand(seed);
 
   int i = 0;
-  //for (int i = 0; i < n_mine; i++) {
   while (i < n_mine) {
     int rand_num = rand() % (n_row * n_col);
     int m_row = rand_num / n_col;
